@@ -1,0 +1,18 @@
+body {
+    background-color: Khaki;
+}
+
+#title {
+    border-radius: 0px;
+    background-color: BlueViolet;
+    color: white;
+}
+
+.nav {
+  text-align: center;
+}
+
+.navbar-nav .nav-item {
+  float: inherit;
+  display: inline-block;
+}
