@@ -101,8 +101,20 @@ function insertUnanswered($name, $class, $question) {
 /**
  * Function to delete a single unanswered question in the database
  */
-function deleteUnanswered() {
+function deleteUnanswered($qid) {
+    $db = new Database();
+    $open = $db->open();
 
+    $sqlDelete = "DELETE FROM q_unanswered WHERE q_unanswered.qid = " . $qid . ";";
+
+    $result = pg_query($open, $sqlDelete);
+    if (!$result) {
+        $error = pg_last_error();
+        echo "Error with query: " . $error;
+        exit();
+    }
+
+    pg_close($open);
 }
 
 /*******************************************************************************
@@ -175,7 +187,19 @@ function insertAnswered($qid, $name, $class, $question, $answer) {
 /**
  * Function to delete a single answered question in the database
  */
-function deleteAnswered() {
+function deleteAnswered($qid) {
+    $db = new Database();
+    $open = $db->open();
 
+    $sqlDelete = "DELETE FROM q_answered WHERE q_answered.qid = " . $qid . ";";
+
+    $result = pg_query($open, $sqlDelete);
+    if (!$result) {
+        $error = pg_last_error();
+        echo "Error with query: " . $error;
+        exit();
+    }
+
+    pg_close($open);
 }
 ?>

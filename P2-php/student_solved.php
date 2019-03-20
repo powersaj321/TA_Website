@@ -14,7 +14,7 @@
         <?php include 'Question.php'; ?>
 
         <div id="title" class="jumbotron text-center mb-0">
-            <h1>Solved Questions</h1>
+            <h1>Answered Questions</h1>
         </div>
 
         <?php include("student_nav.html"); ?>

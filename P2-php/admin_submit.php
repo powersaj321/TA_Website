@@ -17,10 +17,10 @@
             <h1>Submit A Question</h1>
         </div>
 
-        <?php include("ta_nav.html"); ?>
+        <?php include("admin_nav.html"); ?>
 
         <div class="container pt-3">
-            <form id="questionform" class="" action="ta_submit.php" method="get">
+            <form id="questionform" class="" action="admin_submit.php" method="get">
                 <div class="form-group">
                     <label for="name">Name:</label><br>
                     <input type="text" class="form-control" name="name" value="">
@@ -41,7 +41,7 @@
         <?php
             if (isset($_GET['submit_question'])) {
                 insertUnanswered($_GET['name'], $_GET['class'], $_GET['question']);
-                header("Location: ta_submit.php");
+                header("Location: admin_submit.php");
             }
         ?>
     </body>

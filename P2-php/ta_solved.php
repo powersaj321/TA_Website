@@ -14,35 +14,47 @@
         <?php include 'Question.php'; ?>
 
         <div id="title" class="jumbotron text-center mb-0">
-            <h1>Solved Questions</h1>
+            <h1>Answered Questions</h1>
         </div>
 
         <?php include("ta_nav.html"); ?>
         <?php $answers = selectAnswered(); ?>
 
-        <div class="container">
+        <div class="container-fluid">
             <div class="table-responsive">
                 <table class="table table-bordered table-hover table-secondary">
                     <thead>
                         <tr>
-                            <th>Class name</th>
+                            <th>ID#</th>
+                            <th>Name</th>
+                            <th>Class</th>
                             <th>Question</th>
                             <th>Answer</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                             for ($i=0; $i < count($answers); $i++) {
-                                echo "<tr>";
-                                echo "<td>" . $answers[$i]->getClass() . "</td>";
-                                echo "<td>" . $answers[$i]->getQuestion() . "</td>";
-                                echo "<td>" . $answers[$i]->getAnswer() . "</td>";
-                                echo "</tr>";
+                                echo "<tr><form action='ta_solved.php' method='get'>";
+                                echo "<td><input class='form-control' type='text' name='qid' value='" . $answers[$i]->getQid() . "' readonly='readonly'></td>";
+                                echo "<td><input class='form-control' type='text' name='name' value='" . $answers[$i]->getName() . "' readonly='readonly'></td>";
+                                echo "<td><input class='form-control' type='text' name='class' value='" . $answers[$i]->getClass() . "' readonly='readonly'></td>";
+                                echo "<td><input class='form-control' type='text' name='question' value='" . $answers[$i]->getQuestion() . "' readonly='readonly'></td>";
+                                echo "<td><input class='form-control' type='text' name='answer' value='" . $answers[$i]->getAnswer() . "' readonly='readonly'></td>";
+                                echo "<td><div class='btn-group'><input class='btn btn-danger btn-xs' name='deleteAnswer' type='submit' value='Delete'></div></td>";
+                                echo "</form></tr>";
                             }
                         ?>
                     </tbody>
                 </table>
             </div>
         </div>
+        <?php
+        if (isset($_GET['deleteAnswer'])) {
+            deleteAnswered($_GET['qid']);
+            echo "<meta http-equiv=\"refresh\" content=\"0;URL=ta_solved.php\">";
+        }
+        ?>
     </body>
 </html>

@@ -17,7 +17,7 @@
             <h1>Unanswered Questions</h1>
         </div>
 
-        <?php include("ta_nav.html"); ?>
+        <?php include("admin_nav.html"); ?>
         <?php $questions = selectUnanswered(); ?>
 
         <div class="container-fluid">
@@ -37,7 +37,7 @@
                     <tbody>
                         <?php
                             for ($i=0; $i < count($questions); $i++) {
-                                echo "<tr><form action='ta_questions.php' method='get'>";
+                                echo "<tr><form action='admin_questions.php' method='get'>";
                                 echo "<td><input class='form-control' type='text' name='qid' value='" . $questions[$i]->getQid() . "' readonly='readonly'></td>";
                                 echo "<td><input class='form-control' type='text' name='name' value='" . $questions[$i]->getName() . "' readonly='readonly'></td>";
                                 echo "<td><input class='form-control' type='text' name='class' value='" . $questions[$i]->getClass() . "' readonly='readonly'></td>";
@@ -56,12 +56,12 @@
             if (isset($_GET['insertAnswer'])) {
                 insertAnswered($_GET['qid'], $_GET['name'], $_GET['class'], $_GET['question'], $_GET['answer']);
                 deleteUnanswered($_GET['qid']);
-                echo "<meta http-equiv=\"refresh\" content=\"0;URL=ta_questions.php\">";
+                echo "<meta http-equiv=\"refresh\" content=\"0;URL=admin_questions.php\">";
             }
 
             if (isset($_GET['deleteQuestion'])) {
                 deleteUnanswered($_GET['qid']);
-                echo "<meta http-equiv=\"refresh\" content=\"0;URL=ta_questions.php\">";
+                echo "<meta http-equiv=\"refresh\" content=\"0;URL=admin_questions.php\">";
             }
         ?>
     </body>

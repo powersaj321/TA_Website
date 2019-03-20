@@ -14,11 +14,11 @@
         <?php include 'Question.php'; ?>
 
         <div id="title" class="jumbotron text-center mb-0">
-            <h1>Unanswered Questions</h1>
+            <h1>Answered Questions</h1>
         </div>
 
-        <?php include("ta_nav.html"); ?>
-        <?php $questions = selectUnanswered(); ?>
+        <?php include("admin_nav.html"); ?>
+        <?php $answers = selectAnswered(); ?>
 
         <div class="container-fluid">
             <div class="table-responsive">
@@ -31,20 +31,18 @@
                             <th>Question</th>
                             <th>Answer</th>
                             <th></th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                            for ($i=0; $i < count($questions); $i++) {
-                                echo "<tr><form action='ta_questions.php' method='get'>";
-                                echo "<td><input class='form-control' type='text' name='qid' value='" . $questions[$i]->getQid() . "' readonly='readonly'></td>";
-                                echo "<td><input class='form-control' type='text' name='name' value='" . $questions[$i]->getName() . "' readonly='readonly'></td>";
-                                echo "<td><input class='form-control' type='text' name='class' value='" . $questions[$i]->getClass() . "' readonly='readonly'></td>";
-                                echo "<td><input class='form-control' type='text' name='question' value='" . $questions[$i]->getQuestion() . "' readonly='readonly'></td>";
-                                echo "<td><input class='form-control' type='text' name='answer' value='' ></td>";
-                                echo "<td><div class='btn-group'><input class='btn btn-primary btn-xs' name='insertAnswer' type='submit' value='Answer'></div></td>";
-                                echo "<td><div class='btn-group'><input class='btn btn-danger btn-xs' name='deleteQuestion' type='submit' value='Delete'></div></td>";
+                            for ($i=0; $i < count($answers); $i++) {
+                                echo "<tr><form action='admin_solved.php' method='get'>";
+                                echo "<td><input class='form-control' type='text' name='qid' value='" . $answers[$i]->getQid() . "' readonly='readonly'></td>";
+                                echo "<td><input class='form-control' type='text' name='name' value='" . $answers[$i]->getName() . "' readonly='readonly'></td>";
+                                echo "<td><input class='form-control' type='text' name='class' value='" . $answers[$i]->getClass() . "' readonly='readonly'></td>";
+                                echo "<td><input class='form-control' type='text' name='question' value='" . $answers[$i]->getQuestion() . "' readonly='readonly'></td>";
+                                echo "<td><input class='form-control' type='text' name='answer' value='" . $answers[$i]->getAnswer() . "' readonly='readonly'></td>";
+                                echo "<td><div class='btn-group'><input class='btn btn-danger btn-xs' name='deleteAnswer' type='submit' value='Delete'></div></td>";
                                 echo "</form></tr>";
                             }
                         ?>
@@ -53,16 +51,10 @@
             </div>
         </div>
         <?php
-            if (isset($_GET['insertAnswer'])) {
-                insertAnswered($_GET['qid'], $_GET['name'], $_GET['class'], $_GET['question'], $_GET['answer']);
-                deleteUnanswered($_GET['qid']);
-                echo "<meta http-equiv=\"refresh\" content=\"0;URL=ta_questions.php\">";
-            }
-
-            if (isset($_GET['deleteQuestion'])) {
-                deleteUnanswered($_GET['qid']);
-                echo "<meta http-equiv=\"refresh\" content=\"0;URL=ta_questions.php\">";
-            }
+        if (isset($_GET['deleteAnswer'])) {
+            deleteAnswered($_GET['qid']);
+            echo "<meta http-equiv=\"refresh\" content=\"0;URL=admin_solved.php\">";
+        }
         ?>
     </body>
 </html>

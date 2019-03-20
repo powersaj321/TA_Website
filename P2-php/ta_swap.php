@@ -12,7 +12,7 @@
     </head>
     <body>
         <div id="title" class="jumbotron text-center mb-0">
-            <h1>The TA Lab</h1>
+            <h1>Swap Duties</h1>
         </div>
 
         <?php include("ta_nav.html"); ?>
