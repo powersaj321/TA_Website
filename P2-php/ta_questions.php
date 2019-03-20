@@ -20,27 +20,42 @@
         <?php include("ta_nav.html"); ?>
         <?php $questions = selectUnanswered(); ?>
 
-        <div class="container">
+        <div class="container-fluid">
             <div class="table-responsive">
                 <table class="table table-bordered table-hover table-secondary">
                     <thead>
                         <tr>
+                            <th>ID#</th>
+                            <th>Name</th>
                             <th>Class</th>
                             <th>Question</th>
+                            <th>Answer</th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                             for ($i=0; $i < count($questions); $i++) {
-                                echo "<tr>";
-                                echo "<td>" . $questions[$i]->getClass() . "</td>";
-                                echo "<td>" . $questions[$i]->getQuestion() . "</td>";
-                                echo "</tr>";
+                                echo "<tr><form method='get'>";
+                                echo "<td><input class='form-control' type='text' name='qid' value='" . $questions[$i]->getQid() . "' readonly='readonly'></td>";
+                                echo "<td><input class='form-control' type='text' name='name' value='" . $questions[$i]->getName() . "' readonly='readonly'></td>";
+                                echo "<td><input class='form-control' type='text' name='class' value='" . $questions[$i]->getClass() . "' readonly='readonly'></td>";
+                                echo "<td><input class='form-control' type='text' name='question' value='" . $questions[$i]->getQuestion() . "' readonly='readonly'></td>";
+                                echo "<td><input class='form-control' type='text' name='answer' value='' ></td>";
+                                echo "<td><div class='btn-group'><input class='btn btn-primary btn-xs' name='insertAnswer' type='submit' value='Answer'></div></td>";
+                                echo "<td><div class='btn-group'><input class='btn btn-danger btn-xs' name='deleteQuestion' type='submit' value='Delete'></div></td>";
+                                echo "</form></tr>";
                             }
                         ?>
                     </tbody>
                 </table>
             </div>
         </div>
+        <?php
+            //isset deleteQuestion
+
+            //isset insertAnswer
+        ?>
     </body>
 </html>
