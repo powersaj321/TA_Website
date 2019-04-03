@@ -23,6 +23,10 @@
                     <label for="name">Name:</label><br>
                     <input type="text" class="form-control" name="name" value="">
                 </div>
+                <div>
+                    <label for="absent">Name of Absent TA:</label><br>
+                    <input type="text" class="form-control" name="absent" value="">
+                </div>
                 <div class="form-group">
                     <label for="day">Day:</label><br>
                     <input type="text" class="form-control" name="day" value="">
