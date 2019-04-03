@@ -41,8 +41,8 @@
                                 echo "<td><input class='form-control' type='text' name='qid' value='" . $questions[$i]->getQid() . "' readonly='readonly'></td>";
                                 echo "<td><input class='form-control' type='text' name='name' value='" . $questions[$i]->getName() . "' readonly='readonly'></td>";
                                 echo "<td><input class='form-control' type='text' name='class' value='" . $questions[$i]->getClass() . "' readonly='readonly'></td>";
-                                echo "<td><input class='form-control' type='text' name='question' value='" . $questions[$i]->getQuestion() . "' readonly='readonly'></td>";
-                                echo "<td><input class='form-control' type='text' name='answer' value='' ></td>";
+                                echo "<td><input class='form-control' type='textarea' name='question' value='" . $questions[$i]->getQuestion() . "' readonly='readonly'></td>";
+                                echo "<td><input class='form-control' type='textarea' name='answer' value='' ></td>";
                                 echo "<td><div class='btn-group'><input class='btn btn-primary btn-xs' name='insertAnswer' type='submit' value='Answer'></div></td>";
                                 echo "<td><div class='btn-group'><input class='btn btn-danger btn-xs' name='deleteQuestion' type='submit' value='Delete'></div></td>";
                                 echo "</form></tr>";

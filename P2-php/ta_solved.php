@@ -38,10 +38,10 @@
                             for ($i=0; $i < count($answers); $i++) {
                                 echo "<tr><form action='ta_solved.php' method='get'>";
                                 echo "<td><input class='form-control' type='text' name='qid' value='" . $answers[$i]->getQid() . "' readonly='readonly'></td>";
-                                echo "<td><input class='form-control' type='text' name='name' value='" . $answers[$i]->getName() . "' readonly='readonly'></td>";
-                                echo "<td><input class='form-control' type='text' name='class' value='" . $answers[$i]->getClass() . "' readonly='readonly'></td>";
-                                echo "<td><input class='form-control' type='text' name='question' value='" . $answers[$i]->getQuestion() . "' readonly='readonly'></td>";
-                                echo "<td><input class='form-control' type='text' name='answer' value='" . $answers[$i]->getAnswer() . "' readonly='readonly'></td>";
+                                echo "<td>" . $answers[$i]->getName() . "</td>";
+                                echo "<td>" . $answers[$i]->getClass() . "</td>";
+                                echo "<td>" . $answers[$i]->getQuestion() . "</td>";
+                                echo "<td>" . $answers[$i]->getAnswer() . "</td>";
                                 echo "<td><div class='btn-group'><input class='btn btn-danger btn-xs' name='deleteAnswer' type='submit' value='Delete'></div></td>";
                                 echo "</form></tr>";
                             }
