@@ -75,5 +75,50 @@
                 </tbody>
             </table>
         </div>
+        <br>
+        <?php include('Question.php'); ?>
+        <?php $tas = selectTAs(); ?>
+        
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-secondary">
+                <thead>
+                    <tr>
+                        <th>ID#</th>
+                        <th>TA Name</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                        <th>Saturday</th>
+                        <th>Sunday</th>
+                        <th>Courses</th>
+                        <th>Weekly Hours</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                        for ($i=0; $i < count($tas); $i++) {
+                                echo "<tr><form action='admin_schedule.php' method='get'>";
+                                echo "<td><input class='form-control' type='text' name='tid' value='" . $tas[$i]->getTID() . "' readonly='readonly'></td>";
+                                echo "<td><input class='form-control' type='text' name='name' value='" . $tas[$i]->getName() . "' readonly='readonly'></td>";
+                                echo "<td><input class='form-control' type='text' name='monday' value='" . $tas[$i]->getMondayHours() . "' readonly='readonly'></td>";
+                                echo "<td><input class='form-control' type='text' name='monday' value='" . $tas[$i]->getTuesdayHours() . "' readonly='readonly'></td>";
+                                echo "<td><input class='form-control' type='text' name='monday' value='" . $tas[$i]->getWednesdayHours() . "' readonly='readonly'></td>";
+                                echo "<td><input class='form-control' type='text' name='monday' value='" . $tas[$i]->getThursdayHours() . "' readonly='readonly'></td>";
+                                echo "<td><input class='form-control' type='text' name='monday' value='" . $tas[$i]->getFridayHours() . "' readonly='readonly'></td>";
+                                echo "<td><input class='form-control' type='text' name='monday' value='" . $tas[$i]->getSaturdayHours() . "' readonly='readonly'></td>";
+                                echo "<td><input class='form-control' type='text' name='monday' value='" . $tas[$i]->getSundayHours() . "' readonly='readonly'></td>";
+                                echo "<td><input class='form-control' type='text' name='monday' value='" . $tas[$i]->getCourses() . "' readonly='readonly'></td>";
+                                echo "<td><input class='form-control' type='text' name='monday' value='" . $tas[$i]->getHoursPerWeek() . "' readonly='readonly'></td>";
+                                echo "<td><div class='btn-group'><input class='btn btn-danger btn-xs' name='deleteQuestion' type='submit' value='Delete'></div></td>";
+                                echo "</form></tr>";
+                            }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+        
     </body>
 </html>

@@ -14,14 +14,42 @@
         <div id="title" class="jumbotron text-center mb-0">
             <h1>Onboard TA</h1>
         </div>
-
+        <?php include("Question.php"); ?>
         <?php include("ta_nav.html"); ?>
 
         <div class="container pt-3">
-            <form id="questionform" class="" action="index.html" method="post">
+            <form id="questionform" class="" action="ta_onboard.php" method="get">
                 <div class="form-group">
-                    <label for="hours">Preferred Hours Scheduled:</label><br>
-                    <input type="text" class="form-control" name="hours" value="">
+                    <label for="name">TA Name:</label><br>
+                    <input type="text" class="form-control" name="name" value="">
+                </div>
+                <div class="form-group">
+                    <label for="monday">Preferred Monday Hours:</label><br>
+                    <input type="text" class="form-control" name="monday" value="">
+                </div>
+                <div class="form-group">
+                    <label for="tuesday">Preferred Tuesday Hours:</label><br>
+                    <input type="text" class="form-control" name="tuesday" value="">
+                </div>
+                <div class="form-group">
+                    <label for="wednesday">Preferred Wednesday Hours:</label><br>
+                    <input type="text" class="form-control" name="wednesday" value="">
+                </div>
+                <div class="form-group">
+                    <label for="thursday">Preferred Thursday Hours:</label><br>
+                    <input type="text" class="form-control" name="thursday" value="">
+                </div>
+                <div class="form-group">
+                    <label for="friday">Preferred Friday Hours:</label><br>
+                    <input type="text" class="form-control" name="friday" value="">
+                </div>
+                <div class="form-group">
+                    <label for="saturday">Preferred Saturday Hours:</label><br>
+                    <input type="text" class="form-control" name="saturday" value="">
+                </div>
+                <div class="form-group">
+                    <label for="sunday">Preferred Sunday Hours:</label><br>
+                    <input type="text" class="form-control" name="sunday" value="">
                 </div>
                 <div class="form-group">
                     <label for="courses">Preferred Courses:</label><br>
@@ -32,9 +60,18 @@
                     <input type="text" class="form-control" name="hours" value="">
                 </div>
                 <div class="form-group">
-                    <input class="btn btn-primary" type="submit" name="submit" value="Submit">
+                    <input class="btn btn-primary" type="submit" name="onboard" value="Submit">
                 </div>
             </form>
         </div>
+        <?php
+            if (isset($_GET['onboard'])) {
+                insertTA($_GET['name'], $_GET['monday'], $_GET['tuesday'], 
+                        $_GET['wednesday'], $_GET['thursday'], $_GET['friday'],
+                        $_GET['saturday'], $_GET['sunday'], $_GET['courses'],
+                        $_GET['hours']);
+                echo "<meta http-equiv=\"refresh\" content=\"0;URL=ta_onboard.php\">";
+            }
+        ?>
     </body>
 </html>
