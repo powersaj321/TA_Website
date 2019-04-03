@@ -11,6 +11,8 @@
         <title>TA Lab</title>
     </head>
     <body>
+        <?php include 'Question.php'; ?>
+        
         <div id="title" class="jumbotron text-center mb-0">
             <h1>Swap Duties</h1>
         </div>
@@ -18,12 +20,12 @@
         <?php include("ta_nav.html"); ?>
 
         <div class="container pt-3">
-            <form id="questionform" class="" action="index.html" method="post">
+            <form id="questionform" class="" action="ta_swap.php" method="get">
                 <div class="form-group">
                     <label for="name">Name:</label><br>
                     <input type="text" class="form-control" name="name" value="">
                 </div>
-                <div>
+                <div class="form-group">
                     <label for="absent">Name of Absent TA:</label><br>
                     <input type="text" class="form-control" name="absent" value="">
                 </div>
@@ -40,9 +42,15 @@
                     <input type="text" class="form-control" name="course" value="">
                 </div>
                 <div class="form-group">
-                    <input class="btn btn-primary" type="submit" name="submit" value="Submit">
+                    <input class="btn btn-primary" type="submit" name="submit_swap" value="Submit">
                 </div>
             </form>
         </div>
+        <?php
+            if (isset($_GET['submit_swap'])) {
+                insertSwap($_GET['name'], $_GET['absent'], $_GET['day'], $_GET['hours'], $_GET['course']);
+                header("Location: ta_swap.php");
+            }
+        ?>
     </body>
 </html>

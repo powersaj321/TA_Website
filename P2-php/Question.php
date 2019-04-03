@@ -202,4 +202,118 @@ function deleteAnswered($qid) {
 
     pg_close($open);
 }
+
+/**
+ * Code for Swap
+ */
+
+class ta_swap {
+    var $sid;
+    var $name;
+    var $absent;
+    var $day;
+    var $hours;
+    var $course;
+    
+    function __construct($sid, $name, $absent, $day, $hours, $course) {
+        $this->sid = $sid;
+        $this->name = $name;
+        $this->absent = $absent;
+        $this->day = $day;
+        $this->hours = $hours;
+        $this->course = $course;
+    }
+    
+    public function getSid() {
+        return $this->sid;
+    }
+    
+    public function getTAName() {
+        return $this->name;
+    }
+    
+    public function getAbsentName() {
+        return $this->absent;
+    }
+    
+    public function getDay() {
+        return $this->day;
+    }
+    
+    public function getHours() {
+        return $this->hours;
+    }
+    
+    public function getCourse() {
+        return $this->course;
+    }
+}
+
+function selectSwaps() {
+    $db = new Database();
+    $open = $db->open();
+
+    $sql = "SELECT * FROM swap;";
+    $queryRecords = pg_query($open, $sql) or die("error to fetch swap data");
+    $data = pg_fetch_all($queryRecords);
+    $swaps = array();
+
+    if (!empty($data)) {
+        for ($i=0; $i < count($data); $i++) {
+            array_push($swaps, new ta_swap($data[$i]['sid'], $data[$i]['ta_name'],
+                $data[$i]['absent_name'], $data[$i]['date'], $data[$i]['hours'],
+                $data[$i]['course_name']));
+        }
+    }
+
+    pg_close($open);
+
+    return $swaps;
+}
+
+function insertSwap($name, $absent, $day, $hours, $course) {
+    
+    do {
+        $unique = True;
+        $sid = random_int (1, 999999);
+        $swaps = selectSwaps();
+
+        for ($i=0; $i < count($swaps); $i++) {
+            if ($swaps[$i]->getSid() == $sid) {
+                $unique = False;
+            }
+        }
+
+    } while ($unique == False);
+    
+    $db = new Database();
+    $open = $db->open();
+
+    $sqlInsert = "INSERT INTO swap VALUES " . "(" . $sid . ", '" .
+        $name . "', '" . $absent . "', '" . $day . "', '" . $hours . "', '" . $course . "');";
+    $result = pg_query($open, $sqlInsert);
+    if (!$result) {
+        $error = pg_last_error();
+        echo "Error with query: " . $error;
+        exit();
+    }
+
+    pg_close($open);
+}
+
+function deleteSwap($sid) {
+    $db = new Database();
+    $open = $db->open();
+
+    $sqlDelete = "DELETE FROM swap WHERE swap.sid = " . $sid . ";";
+
+    $result = pg_query($open, $sqlDelete);
+    if (!$result) {
+        $error = pg_last_error();
+        echo "Error with query: " . $error;
+        exit();
+    }
+
+    pg_close($open);
+}
 ?>
