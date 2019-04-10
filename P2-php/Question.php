@@ -259,7 +259,6 @@ function deleteSwap($sid) {
     }
     pg_close($open);
 }
-
 class ta_onboard {
     var $tid;
     var $name;
@@ -332,14 +331,12 @@ class ta_onboard {
         return $this->hoursPerWeek;
     }
 }
-
 function selectTAs() {
     $db = new Database();
     $open = $db->open();
     $sql = "SELECT * FROM ta_onboard;";
     $queryRecords = pg_query($open, $sql) or die("error to fetch swap data");
     $data = pg_fetch_all($queryRecords);
-
     $tas = array();
     if (!empty($data)) {
         for ($i=0; $i < count($data); $i++) {
@@ -353,7 +350,6 @@ function selectTAs() {
     
     return $tas;
 }
-
 function insertTA($name, $hoursMon, $hoursTues, $hoursWed, $hoursThur, $hoursFri, 
         $hoursSat, $hoursSun, $courses, $hoursPerWeek) {
     do {
@@ -380,5 +376,17 @@ function insertTA($name, $hoursMon, $hoursTues, $hoursWed, $hoursThur, $hoursFri
         exit();
     }
     pg_close($open);
+}
+function getSchedule() {
+    $db = new Database();
+    $open = $db->open();
+    
+    $sqlSchedule = "SELECT * FROM schedule";
+    $querySchedule = pg_query($sqlSchedule);
+    $schedule = pg_fetch_all($querySchedule);
+    
+    pg_close($open);
+    
+    return $schedule;
 }
 ?>

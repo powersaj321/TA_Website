@@ -16,6 +16,10 @@
         </div>
 
         <?php include("student_nav.html"); ?>
+        
+        <?php include ("Question.php") ?>
+        
+        <?php $schedule = getSchedule(); ?>
 
         <div class="table-responsive">
             <table class="table table-bordered table-hover table-secondary">
@@ -33,44 +37,44 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>3:00pm - 5:00pm</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><?php echo $schedule[0][shifttime] ?></td>
+                        <td><?php echo $schedule[0][sundayhours] ?></td>
+                        <td><?php echo $schedule[0][mondayhours] ?></td>
+                        <td><?php echo $schedule[0][tuesdayhours] ?></td>
+                        <td><?php echo $schedule[0][wednesdayhours] ?></td>
+                        <td><?php echo $schedule[0][thursdayhours] ?></td>
+                        <td><?php echo $schedule[0][fridayhours] ?></td>
+                        <td><?php echo $schedule[0][saturdayhours] ?></td>
                     </tr>
                     <tr>
-                        <td>5:00pm - 7:00pm</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><?php echo $schedule[1][shifttime] ?></td>
+                        <td><?php echo $schedule[1][sundayhours] ?></td>
+                        <td><?php echo $schedule[1][mondayhours] ?></td>
+                        <td><?php echo $schedule[1][tuesdayhours] ?></td>
+                        <td><?php echo $schedule[1][wednesdayhours] ?></td>
+                        <td><?php echo $schedule[1][thursdayhours] ?></td>
+                        <td><?php echo $schedule[1][fridayhours] ?></td>
+                        <td><?php echo $schedule[1][saturdayhours] ?></td>
                     </tr>
                     <tr>
-                        <td>7:00pm - 9:00pm</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><?php echo $schedule[2][shifttime] ?></td>
+                        <td><?php echo $schedule[2][sundayhours] ?></td>
+                        <td><?php echo $schedule[2][mondayhours] ?></td>
+                        <td><?php echo $schedule[2][tuesdayhours] ?></td>
+                        <td><?php echo $schedule[2][wednesdayhours] ?></td>
+                        <td><?php echo $schedule[2][thursdayhours] ?></td>
+                        <td><?php echo $schedule[2][fridayhours] ?></td>
+                        <td><?php echo $schedule[2][saturdayhours] ?></td>
                     </tr>
                     <tr>
-                        <td>9:00pm - 11:00pm</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><?php echo $schedule[3][shifttime] ?></td>
+                        <td><?php echo $schedule[3][sundayhours] ?></td>
+                        <td><?php echo $schedule[3][mondayhours] ?></td>
+                        <td><?php echo $schedule[3][tuesdayhours] ?></td>
+                        <td><?php echo $schedule[3][wednesdayhours] ?></td>
+                        <td><?php echo $schedule[3][thursdayhours] ?></td>
+                        <td><?php echo $schedule[3][fridayhours] ?></td>
+                        <td><?php echo $schedule[3][saturdayhours] ?></td>
                     </tr>
                 </tbody>
             </table>
