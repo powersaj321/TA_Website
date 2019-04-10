@@ -16,6 +16,13 @@
         </div>
 
         <?php include("admin_nav.html"); ?>
+        <?php include("Question.php"); ?>
+        
+        <?php
+            if (isset($_GET['deleteQuestion'])) {
+                deleteTA($_GET['tid']);
+            }
+        ?>
 
         <div class="table-responsive">
             <table class="table table-bordered table-hover table-secondary">
@@ -76,7 +83,6 @@
             </table>
         </div>
         <br>
-        <?php include('Question.php'); ?>
         <?php $tas = selectTAs(); ?>
         
         <div class="table-responsive">

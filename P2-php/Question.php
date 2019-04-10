@@ -377,6 +377,21 @@ function insertTA($name, $hoursMon, $hoursTues, $hoursWed, $hoursThur, $hoursFri
     }
     pg_close($open);
 }
+function deleteTA($tid) {
+    $db = new Database();
+    $open = $db->open();
+    $sqlTADelete = "DELETE FROM ta_onboard WHERE ta_onboard.tid = " . $tid . ";";
+    
+    $result = pg_query($open, $sqlTADelete);
+    
+    if (!$result) {
+        $error = pg_last_error();
+        echo "Error with query: " . $error;
+        exit();
+    }
+    
+    pg_close($open);
+}
 function getSchedule() {
     $db = new Database();
     $open = $db->open();
