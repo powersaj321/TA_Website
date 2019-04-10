@@ -397,11 +397,71 @@ function getSchedule() {
     $open = $db->open();
     
     $sqlSchedule = "SELECT * FROM schedule";
-    $querySchedule = pg_query($sqlSchedule);
+    $querySchedule = pg_query($open, $sqlSchedule);
     $schedule = pg_fetch_all($querySchedule);
     
     pg_close($open);
     
     return $schedule;
+}
+function insert35Schedule($sun, $mon, $tues, $wed, $thur, $fri, $sat) {
+    $db = new Database();
+    $open = $db->open();
+    
+    $sqlDelete = "DELETE FROM schedule WHERE shifttime = '3:00-5:00pm';";
+    pg_query($open, $sqlDelete);
+    
+    $sqlInsert = "INSERT INTO schedule VALUES ('3:00-5:00pm', '" . $sun . "', "
+            . "'" . $mon . "', '" . $tues . "', '" . $wed . "', '" . $thur . "', "
+            . "'" . $fri . "', '" . $sat . "');";
+    
+    pg_query($open, $sqlInsert) or die("Error with inserting 3-5 " . pg_last_error());
+    
+    pg_close();
+}
+function insert57Schedule($sun, $mon, $tues, $wed, $thur, $fri, $sat) {
+    $db = new Database();
+    $open = $db->open();
+    
+    $sqlDelete = "DELETE FROM schedule WHERE shifttime = '5:00-7:00pm';";
+    pg_query($open, $sqlDelete);
+    
+    $sqlInsert = "INSERT INTO schedule VALUES ('5:00-7:00pm', '" . $sun . "', "
+            . "'" . $mon . "', '" . $tues . "', '" . $wed . "', '" . $thur . "', "
+            . "'" . $fri . "', '" . $sat . "');";
+    
+    pg_query($open, $sqlInsert) or die("Error with inserting 5-7 " . pg_last_error());
+    
+    pg_close();
+}
+function insert79Schedule($sun, $mon, $tues, $wed, $thur, $fri, $sat) {
+    $db = new Database();
+    $open = $db->open();
+    
+    $sqlDelete = "DELETE FROM schedule WHERE shifttime = '7:00-9:00pm';";
+    pg_query($open, $sqlDelete);
+    
+    $sqlInsert = "INSERT INTO schedule VALUES ('7:00-9:00pm', '" . $sun . "', "
+            . "'" . $mon . "', '" . $tues . "', '" . $wed . "', '" . $thur . "', "
+            . "'" . $fri . "', '" . $sat . "');";
+    
+    pg_query($open, $sqlInsert) or die("Error with inserting 7-9 " . pg_last_error());
+    
+    pg_close();
+}
+function insert911Schedule($sun, $mon, $tues, $wed, $thur, $fri, $sat) {
+    $db = new Database();
+    $open = $db->open();
+    
+    $sqlDelete = "DELETE FROM schedule WHERE shifttime = '9:00-11:00pm';";
+    pg_query($open, $sqlDelete);
+    
+    $sqlInsert = "INSERT INTO schedule VALUES ('9:00-11:00pm', '" . $sun . "', "
+            . "'" . $mon . "', '" . $tues . "', '" . $wed . "', '" . $thur . "', "
+            . "'" . $fri . "', '" . $sat . "');";
+    
+    pg_query($open, $sqlInsert) or die("Error with inserting 9-11 " . pg_last_error());
+    
+    pg_close();
 }
 ?>
