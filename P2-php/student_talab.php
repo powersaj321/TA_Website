@@ -81,11 +81,6 @@
         </div>
 
         <div class="container" style="background-color: RebeccaPurple; color: white">
-            <div class="row text-center">
-                <div class="col border border-dark">
-                    <h5>Inspirational Quote about getting help here.</h5>
-                </div>
-            </div>
             <div class="row">
                 <div class="col border border-dark">
                     <h5>What is the TA Lab used for?</h5>
